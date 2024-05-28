@@ -8,7 +8,8 @@
     "prisma": "^5.11.0"
   },
   "exports": {
-    "./client": "./src/index.ts"
+    "./client": "./src/index.ts",
+    "./db": "./src/db.ts"
   },
   "main": "./index.ts",
   "scripts": {

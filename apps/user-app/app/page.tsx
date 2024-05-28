@@ -3,6 +3,7 @@ import { Card } from "@repo/ui/card";
 import { Code } from "@repo/ui/code";
 import styles from "./page.module.css";
 import { Button } from "@repo/ui/button";
+import Showbalance from "../components/Showbalance";
 
 function Gradient({
   conic,
@@ -55,6 +56,7 @@ export default function Page(): JSX.Element {
   return (
     <div className="h-screen w-full bg-red-500">
       hi there
+      <Showbalance></Showbalance>
     </div>
   );
 }
