@@ -1,8 +1,9 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": false,
   },
-  "include": ["src"],
+  "include": ["src", "../../apps/user-app/components/Balancecard.tsx"],
   "exclude": ["node_modules", "dist"]
 }

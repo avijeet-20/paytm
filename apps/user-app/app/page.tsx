@@ -55,8 +55,11 @@ const LINKS = [
 export default function Page(): JSX.Element {
   return (
     <div className="h-screen w-full bg-red-500">
-      hi there
-      <Showbalance></Showbalance>
+    
     </div>
   );
 }
+
+
+
+
