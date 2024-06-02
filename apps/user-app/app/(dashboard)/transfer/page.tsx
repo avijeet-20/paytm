@@ -4,6 +4,7 @@ import  db  from "@repo/db/db"
 import { AddMoney } from "../../../components/AddmoneyCard";
 import { BalanceCard } from "../../../components/Balancecard";
 import { OnRampTransaction } from "../../../components/OnRampTransaction";
+import axios from "axios";
 
 
 
@@ -23,11 +24,14 @@ async function getBalance () {
 
 async function getOnRampTransactions () {
     const session  = await getServerSession(authOptions);
+    
     const transactions = await db.onRampTransaction.findMany({
         where:{
             userId:Number(session?.user?.id)
         }
     });
+    console.log(transactions);
+   
     return transactions.map(t => ({
             time:t.startTime,
             amount:t.amount,
