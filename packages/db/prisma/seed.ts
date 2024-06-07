@@ -4,11 +4,11 @@ const prisma = new PrismaClient()
 
 async function main() {
   const alice = await prisma.user.upsert({
-    where: { number: '1111111111' },
+    where: { number: '11' },
     update: {},
     create: {
-      number: '1111111111',
-      password: await bcrypt.hash('alice', 10),
+      number: '11',
+      password: await bcrypt.hash('ram', 10),
       name: 'alice',
       Balance: {
         create: {
@@ -28,12 +28,12 @@ async function main() {
     },
   })
   const bob = await prisma.user.upsert({
-    where: { number: '2222222222' },
+    where: { number: '22' },
     update: {},
     create: {
-      number: '2222222222',
-      password: await bcrypt.hash('bob', 10),
-      name: 'bob',
+      number: '22',
+      password: await bcrypt.hash('avi', 10),
+      name: 'avi',
       Balance: {
         create: {
             amount: 2000,

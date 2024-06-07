@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(cors());
 
 app.post("/hdfcWebhook", async (req, res) => {
-    console.log(req.body);
+
     //TODO: Add zod validation here?
     const paymentInformation: {
         token:string,
@@ -20,8 +20,8 @@ app.post("/hdfcWebhook", async (req, res) => {
     // Update balance in db, add txn
 
     try {
-        await db.$transaction([
-            db.balance.updateMany({
+        await db.$transaction(async (d) => {
+           await d.balance.updateMany({
                 where:{
                     userId:Number(paymentInformation.userId)
                 },
@@ -31,7 +31,7 @@ app.post("/hdfcWebhook", async (req, res) => {
                     }
                 }
             }),
-            db.onRampTransaction.updateMany({
+            await d.onRampTransaction.updateMany({
                 where:{
                     token:paymentInformation.token
                 },
@@ -39,7 +39,8 @@ app.post("/hdfcWebhook", async (req, res) => {
                     status:"Success",
                 }
             })
-        ])
+        })
+        console.log('webhook')
         res.json({
         message:'captured'
         })
